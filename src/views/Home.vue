@@ -74,9 +74,9 @@ export default {
   computed: {
     filteredChartData() {
       const chartData = cloneDeep(this.chartData);
-      const startTime = moment(this.datetimeRange[0]);
-      const endTime = moment(this.datetimeRange[1]);
-      if (this.datetimeRange.length > 1) {
+      if (this.datetimeRange && this.datetimeRange.length > 1) {
+        const startTime = moment(this.datetimeRange[0]);
+        const endTime = moment(this.datetimeRange[1]);
         chartData.datasets.forEach((set) => {
           set.data = set.data
             .filter(data => startTime < moment(data.x) && endTime > moment(data.x));
